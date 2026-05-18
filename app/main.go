@@ -19,14 +19,29 @@ func main() {
 		}
 		input = strings.TrimSpace(input)
 
-		command, args, _ := strings.Cut(input, " ")
+		types := map[string]struct{}{
+			"exit": {},
+			"echo": {},
+			"type": {},
+		}
 
+		command, args, _ := strings.Cut(input, " ")
 		if command == "exit" {
 			break
 		} else if command == "echo" {
 			fmt.Println(args)
+		} else if command == "type" {
+			if _, exists := types[args]; exists {
+				fmt.Printf("%s is a shell builtin\n", args)
+			} else {
+				errorMsg(args)
+			}
 		} else {
-			fmt.Printf("%s: command not found\n", command)
+			errorMsg(command)
 		}
 	}
+}
+
+func errorMsg(command string) {
+	fmt.Printf("%s: command not found\n", command)
 }
