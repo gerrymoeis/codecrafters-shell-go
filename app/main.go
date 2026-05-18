@@ -19,11 +19,7 @@ func main() {
 		}
 		input = strings.TrimSpace(input)
 
-		command, args, found := strings.Cut(input, " ")
-		if !found {
-			command = input
-			args = ""
-		}
+		command, args, _ := strings.Cut(input, " ")
 
 		if command == "exit" {
 			break
