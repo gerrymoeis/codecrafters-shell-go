@@ -14,5 +14,5 @@ func main() {
 	if err != nil {
 		return
 	}
-	fmt.Printf("$ %s: command not found\n", command)
+	fmt.Printf("%s: command not found\n", command)
 }
