@@ -12,17 +12,25 @@ func main() {
 	for {
 		fmt.Print("$ ")
 
-		command, err := reader.ReadString('\n')
+		input, err := reader.ReadString('\n')
 		if err != nil {
 			fmt.Printf("there is an error: %v\n", err)
 			break
 		}
-		command = strings.TrimSpace(command)
+		input = strings.TrimSpace(input)
+
+		command, args, found := strings.Cut(input, " ")
+		if !found {
+			command = input
+			args = ""
+		}
 
 		if command == "exit" {
 			break
+		} else if command == "echo" {
+			fmt.Println(args)
+		} else {
+			fmt.Printf("%s: command not found\n", command)
 		}
-
-		fmt.Printf("%s: command not found\n", command)
 	}
 }
