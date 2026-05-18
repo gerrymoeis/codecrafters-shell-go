@@ -8,13 +8,15 @@ import (
 )
 
 func main() {
+	reader := bufio.NewReader(os.Stdin)
 	for {
 		fmt.Print("$ ")
-		command, err := bufio.NewReader(os.Stdin).ReadString('\n')
-		command = strings.TrimSpace(command)
+		command, err := reader.ReadString('\n')
 		if err != nil {
-			return
+			fmt.Printf("there is an error: %v\n", err)
+			break
 		}
+		command = strings.TrimSpace(command)
 		fmt.Printf("%s: command not found\n", command)
 	}
 }
