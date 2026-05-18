@@ -34,14 +34,10 @@ func main() {
 			if _, exists := types[args]; exists {
 				fmt.Printf("%s is a shell builtin\n", args)
 			} else {
-				errorMsg(args)
+				fmt.Printf("%s: not found\n", args)
 			}
 		} else {
-			errorMsg(command)
+			fmt.Printf("%s: command not found\n", command)
 		}
 	}
-}
-
-func errorMsg(command string) {
-	fmt.Printf("%s: command not found\n", command)
 }
