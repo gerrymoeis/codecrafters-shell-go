@@ -8,7 +8,10 @@ import (
 )
 
 func main() {
+	buildFullPath()
+
 	reader := bufio.NewReader(os.Stdin)
+
 	for {
 		fmt.Print("$ ")
 
@@ -36,8 +39,17 @@ func main() {
 			} else {
 				fmt.Printf("%s: not found\n", args)
 			}
+			// else if  {
+			// 	fmt.Printf("%s is %s\n", args, full_path)
+			// }
+
 		} else {
 			fmt.Printf("%s: command not found\n", command)
 		}
 	}
+}
+
+func buildFullPath() map[string]string {
+	println(os.Getenv("PATH"))
+	return map[string]string{}
 }
