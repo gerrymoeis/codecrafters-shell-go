@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	buildFullPath()
+	fmt.Println(buildFullPath())
 
 	reader := bufio.NewReader(os.Stdin)
 
@@ -50,10 +50,10 @@ func main() {
 }
 
 func buildFullPath() map[string]string {
-	println(os.Getenv("PATH"))
 	path := os.Getenv("PATH")
 	full_path := map[string]string{}
 	for _, dir := range strings.Split(path, ";") {
+		fmt.Println(dir)
 		full_path[dir] = dir
 	}
 	return full_path
