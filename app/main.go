@@ -51,5 +51,10 @@ func main() {
 
 func buildFullPath() map[string]string {
 	println(os.Getenv("PATH"))
-	return map[string]string{}
+	path := os.Getenv("PATH")
+	full_path := map[string]string{}
+	for _, dir := range strings.Split(path, ";") {
+		full_path[dir] = dir
+	}
+	return full_path
 }
